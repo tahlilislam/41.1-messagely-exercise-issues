@@ -12,6 +12,8 @@ function authenticateJWT(req, res, next) {
     req.user = payload; // create a current user
     return next();
   } catch (err) {
+    // not returning next of error just returning next; if invalid token; we dont want to respond with error to user
+    // in next a route handler there wont be req.user if no valid token
     return next();
   }
 }
